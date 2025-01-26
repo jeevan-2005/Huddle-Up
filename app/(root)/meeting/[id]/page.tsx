@@ -7,10 +7,11 @@ import { useUser } from "@clerk/nextjs";
 import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
 import React, { useState } from "react";
 
+// the params field is provided as part of the server-side rendering context, and its type is usually a Promise because it's dynamic and might involve async operations during build or runtime. so use Awaited<> .
 type Props = {
-  params: {
+  params: Awaited<{
     id: string;
-  };
+  }>;
 };
 
 const Meeting = ({ params }: Props) => {
